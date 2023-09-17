@@ -1,6 +1,8 @@
-package com.sih.ais;
+package com.sih.ais.controller;
 
 import com.sih.ais.Entity.dto.User;
+import com.sih.ais.Entity.request.AddUserRequest;
+import com.sih.ais.service.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

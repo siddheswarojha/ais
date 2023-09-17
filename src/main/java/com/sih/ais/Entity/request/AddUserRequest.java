@@ -1,4 +1,4 @@
-package com.sih.ais;
+package com.sih.ais.Entity.request;
 
 import com.sih.ais.Entity.dto.User;
 import lombok.Getter;
