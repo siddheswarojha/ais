@@ -31,4 +31,25 @@ public class PSNServices implements IPSNServices{
         psnRepository.save(psn);
         return "success";
     }
+
+    @Override
+    public String updatePSN(String aadharNumber, String newPSNValue) {
+        User user = userRepository.findUserByAadharNumber(aadharNumber);
+        if (user == null) {
+            return "error";
+        }
+
+        PSN psn = psnRepository.findPSNByAadharNumber(aadharNumber);
+
+        if (psn == null) {
+            return "PSN not found"; // Handle the case where the PSN does not exist.
+        }
+
+        // Update the PSN value with the newPSNValue
+        psn.setPSN(newPSNValue);
+
+        psnRepository.save(psn);
+
+        return "success";
+    }
 }

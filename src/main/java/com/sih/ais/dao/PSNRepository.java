@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PSNRepository extends JpaRepository<PSN,Long> {
+    PSN findPSNByAadharNumber(String aadharNumber);
 }
