@@ -2,10 +2,7 @@ package com.sih.ais;
 
 import com.sih.ais.Entity.dto.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,8 +21,10 @@ public class UserController {
     public void deleteUser(){
         userServices.deleteAll();
     }
-  /*  @PostMapping("add/user")
-    public string AddUser()*/
+    @PostMapping("add/user")
+    public String AddUser(AddUserRequest userRequest){
+     return userServices.addUser(userRequest);
+    }
 
 
 

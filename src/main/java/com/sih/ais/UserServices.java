@@ -18,4 +18,14 @@ public class UserServices {
     public void deleteAll() {
         userRepository.deleteAll();
     }
+
+    public String addUser(AddUserRequest userRequest) {
+        User user = userRequest.ToEntity(null);
+        userRepository.save(user);
+        if(user!=null)
+        {
+            return "success";
+        }
+        return "error";
+    }
 }
