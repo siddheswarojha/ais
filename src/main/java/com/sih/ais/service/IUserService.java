@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+
 public interface IUserService {
     public String addUser(AddUserRequest userRequest);
     public void deleteAll();

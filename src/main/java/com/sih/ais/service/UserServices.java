@@ -34,4 +34,9 @@ public class UserServices implements IUserService {
         return "error";
     }
 
+  /*  {
+        firstName : "sid",
+        lastname: "ojha"
+    }*/
+
 }

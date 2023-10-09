@@ -26,20 +26,20 @@ public class PSNServices implements IPSNServices{
         PSN psn = new PSN();
         psn.setAadharNumber(aadharNumber);
         psn.setHighestQualification("xyz"); //initiating with dummy
-        String newPSN = user.aadharNumber+ user.firstName+ user.dateOfBirth; //initiating with dummy
+        String newPSN = user.aadharNumber + user.firstName + user.dateOfBirth; //initiating with dummy
         psn.setPSN(newPSN);
         psnRepository.save(psn);
         return "success";
     }
 
-    @Override
+/*    @Override
     public String updatePSN(String aadharNumber, String newPSNValue) {
         User user = userRepository.findUserByAadharNumber(aadharNumber);
         if (user == null) {
             return "error";
         }
 
-        PSN psn = psnRepository.findPSNByAadharNumber(aadharNumber);
+       // PSN psn = psnRepository.findPSNByAadharNumber(aadharNumber);
 
         if (psn == null) {
             return "PSN not found"; // Handle the case where the PSN does not exist.
@@ -51,5 +51,5 @@ public class PSNServices implements IPSNServices{
         psnRepository.save(psn);
 
         return "success";
-    }
+    }*/
 }
