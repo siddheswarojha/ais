@@ -13,7 +13,7 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    UserServices userServices;   // UserServices userServices = new UserServices
+    UserServices userServices;   // UserServices  = new UserServices
     @GetMapping("list/user")
     public List<User> GetAllUserDetails(){
         return userServices.getAllUserDetails();
@@ -24,7 +24,7 @@ public class UserController {
         userServices.deleteAll();
     }
     @PostMapping("add/user")
-    public String AddUser(AddUserRequest userRequest){
+    public String AddUser(@RequestBody AddUserRequest userRequest){
      return userServices.addUser(userRequest);
     }
 
