@@ -21,6 +21,7 @@ public class AddUserRequest {
         if(user==null){
             user = new User();
         }
+        user.password=this.password;
         user.firstName= this.firstName;
         user.lastName=this.lastName;
         user.aadharNumber= this.aadharNumber;

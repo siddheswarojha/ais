@@ -19,15 +19,15 @@ public class Student {
     private int id;
 
     @Column(nullable = false)
-    private String name;
+    public String name;
 
-    private String number;
+    public String number;
 
-    private String email;
+    public String email;
 
-    private String password;
+    public String password;
 
-    private int Adhar_no;
+    public Long Adhar_no;
 
 }
 /*dob

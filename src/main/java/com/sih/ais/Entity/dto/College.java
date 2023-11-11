@@ -1,29 +1,29 @@
 package com.sih.ais.Entity.dto;
 
-
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
-
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-@Table
-@NoArgsConstructor
 @Getter
 @Setter
-
 public class College {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long collegeId;
+    public int collegeId;
 
-    @Column(nullable = false)
-    private String collegetype;
+    public String collegeEmail;
+
+    public String password;
+
+    public String collegeType;
+    public String collegeDescription;
 
 
-    @Column(nullable = false)
-    private String collegedescription;
+
 }

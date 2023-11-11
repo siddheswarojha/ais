@@ -1,10 +1,8 @@
 package com.sih.ais.controller;
 
-
-
 import com.sih.ais.Entity.request.ApiResponse;
 import com.sih.ais.Entity.request.CollegeDto;
-import com.sih.ais.service.CollegeService;
+import com.sih.ais.service.ICollegeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,42 +11,36 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/asi/colleges/")
+@RequestMapping("ais/college")
 public class CollegeController {
+
     @Autowired
-    private CollegeService collegeService;
+    private ICollegeService IcollegeService;
 
-    @PostMapping("/")
-    public ResponseEntity<CollegeDto> createCollege(@RequestBody CollegeDto collegeDto){
-        CollegeDto createCollegeDto = this.collegeService.createCollege(collegeDto);
-        return  new ResponseEntity<>(createCollegeDto, HttpStatus.CREATED);
+    @PostMapping("/add/college")
+    public String createCollege(@RequestBody CollegeDto collegeDto){
+        return this.IcollegeService.createCollege(collegeDto);
     }
 
-    @PutMapping("/{collegeId}")
-    public ResponseEntity<CollegeDto> updateCollege(@RequestBody CollegeDto collegeDto,@PathVariable Long collegeId){
-        CollegeDto updateCollege = this.collegeService.updateCollege(collegeDto,collegeId);
-        return ResponseEntity.ok(updateCollege);
+    @PutMapping("/update/{collegeId}")
+    public String updateCollegeDetails(@RequestBody CollegeDto collegeDto,@PathVariable Integer collegeId){
+        return this.IcollegeService.updateCollegeDetails(collegeDto,collegeId);
     }
-
-    @DeleteMapping("/{collegeId}")
-    public ResponseEntity<ApiResponse> deleteCollege(@PathVariable ("collegeId") Long collegeId){
-        this.collegeService.deleteCollege(collegeId);
-        return new ResponseEntity<>(new ApiResponse("College Deleted Successfully",true),HttpStatus.OK);
-    }
-
-    @DeleteMapping("/")
-    public ResponseEntity<ApiResponse> deleteAllColleges(){
-        this.collegeService.deleteAllCollege();
-        return new ResponseEntity<>(new ApiResponse("All Colleges Deleteed",true),HttpStatus.OK);
-    }
-
     @GetMapping("/")
     public ResponseEntity<List<CollegeDto>> getAllCollege(){
-        return ResponseEntity.ok(this.collegeService.getAllCollege());
+        return ResponseEntity.ok(this.IcollegeService.getAllCollege());
+
+    }
+    @GetMapping("/{collegeId}")
+    public CollegeDto getCollegeById(@PathVariable Integer collegeId){
+        return IcollegeService.getCollegeById(collegeId);
+
+    }
+    @DeleteMapping("/{collegeId}")
+    public ResponseEntity<ApiResponse> deleteCollege(@PathVariable Integer collegeId){
+        this.IcollegeService.deleteCollege(collegeId);
+        return new ResponseEntity<>(new ApiResponse("College deleted Successfully",true), HttpStatus.OK);
     }
 
-    @GetMapping("/{collegeId}")
-    public ResponseEntity<CollegeDto> getSingleCollege(@PathVariable Long collegeId){
-        return ResponseEntity.ok(this.collegeService.getCollegeById(collegeId));
-    }
+
 }
